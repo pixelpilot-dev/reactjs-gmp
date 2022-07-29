@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { I18Y, LOCALE } from '../../core/i18y';
-import { GENRES } from '../../core/constants';
 import { useLazyGetMoviesQuery } from '../../core/store/movies/api';
 import { ErrorBoundary } from '../../components/UI/ErrorBoundary';
 import { Layout } from '../../components/Layout';
@@ -18,14 +17,16 @@ const MainPage = () => {
   const [getMovies, { data: filteredMovies = [], isLoading }] = useLazyGetMoviesQuery();
 
   useEffect(() => {
-    setMovies(filteredMovies);
+    if (filteredMovies.length) {
+      setMovies(filteredMovies);
+    }
   }, [filteredMovies]);
 
   useEffect(() => {
     const filter = tag !== I18Y[LOCALE].FILTER_ALL_TAG_CAPTION ? [tag] : [];
     const sort = {
       sortBy: sorting,
-      sortOrder: 'asc',
+      sortOrder: 'desc',
     };
 
     getMovies({
@@ -34,13 +35,7 @@ const MainPage = () => {
     });
   }, [tag, sorting]);
 
-  const genreForFilter = ['fantasy', 'comedy', 'family', 'romance'];
-  const optionsForFilter = genreForFilter.reduce((acc, genre) => {
-    return {
-      ...acc,
-      [genre]: GENRES[genre],
-    };
-  }, {});
+  const genresForFilter = ['Fantasy', 'Comedy', 'Family', 'Drama'];
 
   const optionsForSort = {
     release_date: I18Y[LOCALE].RELEASE_DATE,
@@ -54,7 +49,7 @@ const MainPage = () => {
   return (
     <Layout>
       <div className={styles.filterPanel}>
-        <FilterByTags options={optionsForFilter} onClick={handleFilter} />
+        <FilterByTags options={genresForFilter} onClick={handleFilter} />
         <Sort
           caption={I18Y[LOCALE].SORT_BY_CAPTION}
           id='sorting-movies'

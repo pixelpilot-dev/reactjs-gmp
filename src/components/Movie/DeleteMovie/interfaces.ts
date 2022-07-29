@@ -1,3 +1,4 @@
 export interface IDeleteMovieProps {
-  id: string;
+  id: string | number;
+  onSuccess: (state: boolean) => void;
 }

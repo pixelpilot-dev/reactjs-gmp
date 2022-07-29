@@ -43,3 +43,10 @@
     margin-left: 13px;
   }
 }
+
+.errors {
+  @extend %error;
+
+  margin-top: 0;
+  margin-bottom: 10px;
+}

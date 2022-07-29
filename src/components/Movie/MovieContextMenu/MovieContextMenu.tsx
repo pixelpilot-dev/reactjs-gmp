@@ -30,7 +30,7 @@ export const MovieContextMenu: React.FC<IMovieContextMenuProps> = ({ children, c
         <Icon icon={closeIcon} />
       </button>
 
-      <div className={styles.list}>{children}</div>
+      {isShow && <div className={styles.list}>{children}</div>}
     </div>
   );
 };

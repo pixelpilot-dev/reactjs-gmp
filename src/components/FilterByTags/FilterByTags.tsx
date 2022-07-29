@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
 import { IFilterByTagsProps } from './interfaces';
-import { IGenresProps } from '../../core/types/IGenresProps';
+import { TGenresProps } from '../../core/types/TGenresProps';
 import { LOCALE, I18Y } from '../../core/i18y';
 
 import styles from './FilterByTags.module.scss';
@@ -16,7 +16,7 @@ export const FilterByTags: React.FC<IFilterByTagsProps> = ({ options, onClick })
 
   const renderItem = (item: string) => {
     const isAllItem = item === I18Y[LOCALE].FILTER_ALL_TAG_CAPTION;
-    const caption = isAllItem ? I18Y[LOCALE].FILTER_ALL_TAG_CAPTION : options[item];
+    const caption = isAllItem ? I18Y[LOCALE].FILTER_ALL_TAG_CAPTION : item;
 
     return (
       <button
@@ -30,11 +30,7 @@ export const FilterByTags: React.FC<IFilterByTagsProps> = ({ options, onClick })
     );
   };
 
-  const renderList = (items: IGenresProps) => {
-    const itemsKeys = Object.keys(items);
-
-    return itemsKeys.map(renderItem);
-  };
+  const renderList = (items: TGenresProps) => items.map(renderItem);
 
   return (
     <div className={styles.filter}>

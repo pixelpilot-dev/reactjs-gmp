@@ -1,5 +1,6 @@
 .datepicker {
   position: relative;
+  border-radius: 4px;
 
   .calendarIcon {
     position: absolute;
@@ -64,4 +65,12 @@
       outline: 1px solid rgba($white, 0.5);
     }
   }
+}
+
+.error {
+  @extend %error;
+}
+
+.isInvalid {
+  border: 1px solid $primary;
 }

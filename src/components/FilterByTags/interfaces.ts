@@ -1,6 +1,6 @@
-import { IGenresProps } from '../../core/types/IGenresProps';
+import { TGenresProps } from '../../core/types/TGenresProps';
 
 export interface IFilterByTagsProps {
-  options: IGenresProps;
+  options: TGenresProps;
   onClick: (item: string) => void;
 }
