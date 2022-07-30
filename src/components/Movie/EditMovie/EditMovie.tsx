@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { I18Y, LOCALE } from '../../../core/i18y';
 import { useGetMovieByIdQuery } from '../../../core/store/movies/api';
 import { IEditMovieProps } from './interfaces';

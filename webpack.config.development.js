@@ -10,6 +10,7 @@ module.exports = env => {
     mode: 'development',
     entry: './src/index.tsx',
     output: {
+      publicPath: '/',
       filename: '[name].bundle.js',
       chunkFilename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
@@ -29,6 +30,7 @@ module.exports = env => {
       port: 3030,
       open: true,
       hot: true,
+      historyApiFallback: true,
     },
     optimization: {
       splitChunks: {

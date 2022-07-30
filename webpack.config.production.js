@@ -10,6 +10,7 @@ module.exports = env => {
     mode: 'production',
     entry: './src/index.tsx',
     output: {
+      publicPath: '/',
       filename: '[name].bundle.js',
       chunkFilename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),

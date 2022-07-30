@@ -20,4 +20,8 @@ export default {
   NOTIFICATION_MESSAGE_SUCCESS_FOR_ADD_MOVIE: 'The movie has been added to database successfully',
   NOTIFICATION_MESSAGE_SUCCESS_FOR_DELETE_MOVIE: 'The movie has been deleted successfully',
   ERROR_TEXT: 'Something went wrong. Please try again later',
+  PAGE_NOT_FOUND_TITLE: 'Oops! 404 page not found...',
+  PAGE_NOT_FOUND_TEXT: 'We can`t find the page you are looking for. Go ',
+  PAGE_NOT_FOUND_LINK_HOME: 'home',
+  NO_RESULT_SEARCH: 'Sorry! No result found :(',
 };
