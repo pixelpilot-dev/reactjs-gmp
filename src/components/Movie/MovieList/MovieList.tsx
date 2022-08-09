@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { IMovieListProps } from './interfaces';
 import { IMovieProps } from '../../../core/types/IMovieProps';
+import { IMovieListProps } from './interfaces';
 
 import useToggleModal from '../../../hooks/useToggleModal';
 
@@ -15,7 +15,6 @@ export const MovieList: React.FC<IMovieListProps> = ({ movies }) => {
   const [movieEditing, setMovieEditing] = useState(null);
   const [movieDeleting, setMovieDeleting] = useState(null);
   const { isOpenModal: isOpenEditModal, onToggleModal: onToggleEditModal } = useToggleModal();
-
   const { isOpenModal: isOpenDeleteModal, onToggleModal: onToggleDeleteModal } = useToggleModal();
 
   const handlerEditMovie = (id: string) => {

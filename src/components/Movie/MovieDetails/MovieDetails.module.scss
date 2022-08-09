@@ -9,11 +9,32 @@
   }
 
   .picture {
+    position: relative;
     width: 322px;
+    padding-bottom: 45%;
 
     @include for-mobile {
       width: 100%;
       margin-bottom: 30px;
+    }
+
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    &.notFound {
+      background-color: $grey;
+
+      img {
+        width: 70%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
   }
 

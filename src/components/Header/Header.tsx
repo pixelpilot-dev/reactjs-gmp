@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import cn from 'classnames';
-import { actionTypes, useGlobalContext } from '../../core/store';
 import { LOCALE, I18Y } from '../../core/i18y';
 
+import { useActions, useAppSelector } from '../../hooks/redux';
 import useToggleModal from '../../hooks/useToggleModal';
 
 import { Wrapper } from '../Wrapper';
@@ -21,26 +21,23 @@ import plusIcon from '../../assets/sprites/plus.svg';
 import searchIcon from '../../assets/sprites/search.svg';
 
 export const Header: React.FC = () => {
-  const { state, dispatch } = useGlobalContext();
+  const { openedMovieId } = useAppSelector(state => state.movies);
   const { isOpenModal, onToggleModal } = useToggleModal();
-  const [movieDetails, setMovieDetails] = useState(null);
+  const [idMovieDetails, setIdMovieDetails] = useState(null);
   const [isShowSearch, setIsShowSearch] = useState<boolean>(true);
+  const { setMovieDetails } = useActions();
 
   useEffect(() => {
-    if (state.movieDetails) {
-      setMovieDetails(state.movieDetails);
+    if (openedMovieId) {
+      setIdMovieDetails(openedMovieId);
       setIsShowSearch(false);
     }
-  }, [state.movieDetails]);
+  }, [openedMovieId]);
 
   const handlerShowSearch = () => {
     setIsShowSearch(true);
+    setIdMovieDetails(null);
     setMovieDetails(null);
-
-    dispatch({
-      type: actionTypes.SET_MOVIE_DETAILS,
-      payload: null,
-    });
   };
 
   return (
@@ -78,7 +75,7 @@ export const Header: React.FC = () => {
         </div>
 
         {isShowSearch && <Search className={styles.search} />}
-        {movieDetails && <MovieDetails movie={movieDetails} />}
+        {idMovieDetails && <MovieDetails id={idMovieDetails} />}
       </Wrapper>
     </header>
   );

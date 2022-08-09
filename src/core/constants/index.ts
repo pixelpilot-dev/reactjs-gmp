@@ -29,4 +29,9 @@ export const GENRES = {
   comedy: 'Comedy',
   horror: 'Horror',
   criminal: 'Crime',
+  romance: 'Romance',
+  animation: 'Animation',
+  family: 'Family',
+  fantasy: 'Fantasy',
+  scf: 'Science Fiction',
 };

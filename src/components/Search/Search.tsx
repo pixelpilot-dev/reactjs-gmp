@@ -16,11 +16,17 @@ export const Search: React.FC<ISearchProps> = ({ className }) => {
     setValue(currentTarget.value);
   };
 
+  const handleSubmitForm = (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    setValue('');
+  };
+
   return (
     <div className={cn(styles.search, className)}>
       <div className={styles.title}>{I18Y[LOCALE].SEARCH_TITLE}</div>
 
-      <form className={styles.form}>
+      <form onSubmit={handleSubmitForm} className={styles.form}>
         <Input
           type='text'
           id='search'

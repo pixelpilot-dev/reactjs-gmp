@@ -1,12 +1,14 @@
 export interface IMovieProps {
-  id: string;
-  slug: string;
-  url: string;
   title: string;
-  preview: string;
-  genre: string[];
-  releaseDate: string | Date;
-  runtime: number;
+  tagline: string;
+  vote_average: number;
+  vote_count: number;
+  release_date: string | Date;
+  poster_path: string;
   overview: string;
-  rating: number;
+  budget: number;
+  revenue: number;
+  runtime: number;
+  genres: string[];
+  id: string | number;
 }

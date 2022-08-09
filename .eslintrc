@@ -55,6 +55,14 @@
     ],
     "react/state-in-constructor": ["error", "never"],
     "react/jsx-props-no-spreading": "off",
-    "max-len": ["error", { "code": 100 }]
+    "max-len": ["error", { "code": 100 }],
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "variable",
+        "format": ["camelCase", "UPPER_CASE", "snake_case", "PascalCase"]
+      }
+    ],
+    "no-param-reassign": "off"
   }
 }

@@ -2,18 +2,42 @@
   position: relative;
 
   .preview {
+    position: relative;
     display: block;
     width: 100%;
+    padding-bottom: 150%;
     margin-bottom: 20px;
     overflow: hidden;
+    cursor: pointer;
 
     img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      object-fit: cover;
       transition: transform 0.3s ease-in;
+    }
+
+    &.notFound {
+      background-color: $grey;
+
+      img {
+        width: 70%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: none;
+      }
     }
 
     @include for-hover {
       &:hover img {
         transform: scale(1.02);
+      }
+
+      &.notFound:hover img {
+        transform: translate(-50%, -50%);
       }
     }
   }
@@ -28,6 +52,7 @@
     color: $white7;
     margin-bottom: 8px;
     margin-right: 5px;
+    cursor: pointer;
     transition: color 0.3s linear;
 
     @include for-hover {

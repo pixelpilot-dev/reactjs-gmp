@@ -15,16 +15,18 @@ import styles from './MovieForm.module.scss';
 
 export const MovieForm: React.FC<IMovieFormProps> = ({ movie }) => {
   const [movieData, setMovieData] = useState<IMovieProps>({
-    id: '',
-    slug: '',
-    url: '',
     title: '',
-    preview: '',
-    genre: [],
-    releaseDate: '',
-    runtime: 0,
+    tagline: '',
+    vote_average: 0,
+    vote_count: 0,
+    release_date: '',
+    poster_path: '',
     overview: '',
-    rating: 0,
+    budget: 0,
+    revenue: 0,
+    runtime: 0,
+    genres: [],
+    id: '',
   });
 
   useEffect(() => {
@@ -45,12 +47,12 @@ export const MovieForm: React.FC<IMovieFormProps> = ({ movie }) => {
   };
 
   const handlerChangeDate = (date: Date) => {
-    setMovieData({ ...movieData, releaseDate: date });
+    setMovieData({ ...movieData, release_date: date });
   };
 
   const handleSelectMultipleChange = () => {};
 
-  const { url, title, genre, releaseDate, runtime, overview, rating } = movieData;
+  const { tagline, title, genres, release_date, runtime, overview, vote_average } = movieData;
 
   return (
     <form className={styles.form}>
@@ -72,19 +74,19 @@ export const MovieForm: React.FC<IMovieFormProps> = ({ movie }) => {
           id='movie-release-date'
           label='Release date'
           forId='movie-release-date'
-          startDateCurrent={releaseDate}
+          startDateCurrent={release_date}
           onChange={handlerChangeDate}
         />
       </div>
       <div className={styles.field}>
         <InputWithLabel
           type='text'
-          name='url'
-          value={url}
-          label='Url'
-          placeholder='https://'
-          id='movie-url'
-          forId='movie-url'
+          name='tagline'
+          value={tagline}
+          label='Tagline'
+          placeholder=''
+          id='movie-tagline'
+          forId='movie-tagline'
           onChange={handleInputChange}
         />
       </div>
@@ -92,7 +94,7 @@ export const MovieForm: React.FC<IMovieFormProps> = ({ movie }) => {
         <InputWithLabel
           type='text'
           name='rating'
-          value={rating}
+          value={vote_average}
           label='Rating'
           placeholder='7.8'
           id='movie-rating'
@@ -104,7 +106,7 @@ export const MovieForm: React.FC<IMovieFormProps> = ({ movie }) => {
         <SelectMultipleWithLabel
           type='text'
           name='genre'
-          value={genre}
+          value={genres}
           label='Genre'
           placeholder='Select genre'
           id='movie-genre'
