@@ -1,3 +1,4 @@
 export interface IEditMovieProps {
-  movieId: string;
+  id: string | number;
+  onSuccess: (state: boolean) => void;
 }

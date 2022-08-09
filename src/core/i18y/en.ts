@@ -15,4 +15,9 @@ export default {
   POPUP_TITLE_ADD_MOVIE: 'Add movie',
   POPUP_TITLE_DELETE_MOVIE: 'Delete movie',
   POPUP_TEXT_DELETE_MOVIE: 'Are you sure you want to delete this movie?',
+  NOTIFICATION_TITLE_SUCCESS: 'Congratulations!',
+  NOTIFICATION_MESSAGE_SUCCESS_FOR_EDIT_MOVIE: 'The movie has been edited successfully',
+  NOTIFICATION_MESSAGE_SUCCESS_FOR_ADD_MOVIE: 'The movie has been added to database successfully',
+  NOTIFICATION_MESSAGE_SUCCESS_FOR_DELETE_MOVIE: 'The movie has been deleted successfully',
+  ERROR_TEXT: 'Something went wrong. Please try again later',
 };

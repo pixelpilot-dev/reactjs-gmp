@@ -1,6 +1,7 @@
 export interface IDatePickerInputProps {
   id: string;
+  name: string;
   placeholder?: string;
   startDateCurrent?: string | Date;
-  onChange: (date: Date) => void;
+  className?: string;
 }

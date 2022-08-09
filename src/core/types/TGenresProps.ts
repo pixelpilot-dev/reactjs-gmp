@@ -1,0 +1,1 @@
+export type TGenresProps = string[];

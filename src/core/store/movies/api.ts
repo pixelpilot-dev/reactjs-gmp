@@ -15,6 +15,7 @@ export const moviesApi = createApi({
         url: '/movies',
         params: {
           ...params,
+          limit: 15,
         },
       }),
       transformResponse: (response: IMoviesResponse) => response.data,
@@ -30,7 +31,36 @@ export const moviesApi = createApi({
       query: (id: string | number) => `movies/${id}`,
       providesTags: (result, error, id) => [{ type: 'Movies', id }],
     }),
+    addMovie: build.mutation({
+      query: body => ({
+        url: 'movies',
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: [{ type: 'Movies' }],
+    }),
+    updateMovie: build.mutation({
+      query: body => ({
+        url: 'movies',
+        method: 'PUT',
+        body,
+      }),
+      invalidatesTags: [{ type: 'Movies' }],
+    }),
+    deleteMovie: build.mutation({
+      query: id => ({
+        url: `movies/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: [{ type: 'Movies' }],
+    }),
   }),
 });
 
-export const { useLazyGetMoviesQuery, useGetMovieByIdQuery } = moviesApi;
+export const {
+  useLazyGetMoviesQuery,
+  useGetMovieByIdQuery,
+  useAddMovieMutation,
+  useUpdateMovieMutation,
+  useDeleteMovieMutation,
+} = moviesApi;

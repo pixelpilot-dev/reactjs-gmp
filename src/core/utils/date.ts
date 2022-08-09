@@ -12,3 +12,9 @@ export const getTime = (timeInMinutes: number) => {
 
   return `${hours}h ${minutes}min`;
 };
+
+export const getIsoDate = (value: Date) => {
+  const [date, time] = value.toISOString().split('T');
+
+  return date;
+};

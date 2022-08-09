@@ -7,3 +7,11 @@
   height: 197px;
   min-height: 100px;
 }
+
+.isInvalid {
+  @extend %form-field-is-invalid;
+}
+
+.error {
+  @extend %error;
+}

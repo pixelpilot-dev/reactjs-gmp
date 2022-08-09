@@ -6,6 +6,5 @@ export interface ITextareaProps {
   disabled?: boolean;
   cols?: number;
   rows?: number;
-  onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   className?: string;
 }

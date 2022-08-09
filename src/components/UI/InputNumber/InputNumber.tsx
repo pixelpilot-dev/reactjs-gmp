@@ -1,14 +1,14 @@
 import * as React from 'react';
 import cn from 'classnames';
 import { ErrorMessage, useField } from 'formik';
-import { IInputProps } from './interfaces';
+import { IInputNumberProps } from './interfaces';
 
-import styles from './Input.module.scss';
+import styles from './InputNumber.module.scss';
 
-export const Input: React.FC<IInputProps> = ({ className, ...props }) => {
+export const InputNumber: React.FC<IInputNumberProps> = ({ className, ...props }) => {
   const [field, meta] = useField(props);
 
-  const { id, type, placeholder, disabled, readonly } = props;
+  const { id, placeholder, disabled, readonly, step = 1, min, max } = props;
 
   const isInvalid = !!(meta.touched && meta.error);
 
@@ -16,10 +16,13 @@ export const Input: React.FC<IInputProps> = ({ className, ...props }) => {
     <>
       <input
         id={id}
-        type={type}
+        type='number'
         placeholder={placeholder}
         disabled={disabled}
         readOnly={readonly}
+        step={step}
+        min={min}
+        max={max}
         {...field}
         className={cn(styles.input, { [styles.isInvalid]: isInvalid }, className)}
       />

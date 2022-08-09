@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import cn from 'classnames';
+import { useField } from 'formik';
 import { ISelectMultipleProps } from './interfaces';
 import useClickOutside from '../../../hooks/useClickOutside';
 
@@ -11,28 +12,27 @@ import styles from './SelectMultiple.module.scss';
 import checkIcon from '../../../assets/sprites/indicator.svg';
 
 export const SelectMultiple: React.FC<ISelectMultipleProps> = ({
+  initialOptions,
   options,
-  value,
   className,
-  onChange,
   ...inputProps
 }) => {
+  const [field, meta, { setValue }] = useField(inputProps);
   const ref = useRef();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [choosenOptions, setChoosenOptions] = useState([]);
-  const [optionsValue, setOptionsValue] = useState('');
+  const [chosenOptions, setChosenOptions] = useState([]);
 
   useClickOutside(ref, () => setIsOpen(false));
 
   useEffect(() => {
-    if (value) {
-      setChoosenOptions(value);
+    if (initialOptions?.length) {
+      setChosenOptions(initialOptions);
     }
-  }, [value]);
+  }, [initialOptions]);
 
   useEffect(() => {
-    setOptionsValue(choosenOptions.map(item => options[item]).join(', '));
-  }, [choosenOptions, options]);
+    setValue(chosenOptions.map(item => item));
+  }, [chosenOptions, options]);
 
   const handlerOpen = (event: React.SyntheticEvent) => {
     event.preventDefault();
@@ -40,15 +40,15 @@ export const SelectMultiple: React.FC<ISelectMultipleProps> = ({
   };
 
   const handlerOnClickOption = (option: string) => {
-    if (choosenOptions.includes(option)) {
-      setChoosenOptions(choosenOptions.filter(item => item !== option));
+    if (chosenOptions.includes(option)) {
+      setChosenOptions(chosenOptions.filter(item => item !== option));
     } else {
-      setChoosenOptions([...choosenOptions, option]);
+      setChosenOptions([...chosenOptions, option]);
     }
   };
 
   const renderOption = (option: string) => {
-    const isActiveOption = choosenOptions.includes(option);
+    const isActiveOption = chosenOptions.includes(option);
 
     return (
       <div
@@ -61,27 +61,17 @@ export const SelectMultiple: React.FC<ISelectMultipleProps> = ({
         <span className={styles.check}>
           <Icon icon={checkIcon} className={styles.checkIcon} />
         </span>
-        {options[option]}
+        {option}
       </div>
     );
   };
 
-  const renderList = (optionsGroup: { [key: string]: string }) => {
-    const optionKeys = Object.keys(optionsGroup);
-
-    return optionKeys.map(renderOption);
-  };
+  const renderList = (optionsGroup: string[]) => optionsGroup.map(renderOption);
 
   return (
     <div ref={ref} className={cn(styles.select, className)}>
       <div className={styles.field} onClick={handlerOpen} role='button' aria-hidden='true'>
-        <Input
-          value={optionsValue}
-          onChange={onChange}
-          readonly
-          className={styles.input}
-          {...inputProps}
-        />
+        <Input type='text' readonly className={styles.input} {...inputProps} {...field} />
       </div>
       {isOpen && <div className={styles.list}>{renderList(options)}</div>}
     </div>
