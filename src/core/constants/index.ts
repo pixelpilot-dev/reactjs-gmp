@@ -58,3 +58,15 @@ export const NOTIFICATION_TYPES = {
   ERROR: 'error',
   WARNING: 'warning',
 };
+
+export const QUERY_PARAMS_BY_MOVIES = {
+  MOVIE: 'movie',
+  SORT_BY: 'sortBy',
+  SORT_ORDER: 'sortOrder',
+  SEARCH: 'search',
+  SEARCH_BY: 'searchBy',
+  GENRE: 'genre',
+  FILTER: 'filter',
+  OFFSET: 'offset',
+  LIMIT: 'limit',
+};

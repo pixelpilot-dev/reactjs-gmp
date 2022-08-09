@@ -1,18 +1,19 @@
 /* eslint-disable no-param-reassign */
 import React from 'react';
 import cn from 'classnames';
+import { QUERY_PARAMS_BY_MOVIES } from '../../../core/constants';
 import { I18Y, LOCALE } from '../../../core/i18y';
 import { IMovieCardProps } from './interfaces';
 import { getYear } from '../../../core/utils/date';
 import { replaceNotFoundImage } from '../../../core/utils/replaceNotFoundImage';
-import { useActions } from '../../../hooks/redux';
+import useQueryParam from '../../../hooks/useQueryParam';
 
 import { MovieContextMenu } from '../MovieContextMenu';
 
 import styles from './MovieCard.module.scss';
 
 export const MovieCard: React.FC<IMovieCardProps> = ({ movie, className, onEdit, onDelete }) => {
-  const { setMovieDetails } = useActions();
+  const [, setMovieQuery] = useQueryParam(QUERY_PARAMS_BY_MOVIES.MOVIE);
   const { id, title, poster_path, genres, release_date } = movie;
 
   const handlerViewDetails = (
@@ -21,7 +22,8 @@ export const MovieCard: React.FC<IMovieCardProps> = ({ movie, className, onEdit,
   ) => {
     event.preventDefault();
 
-    setMovieDetails(idMovie);
+    // setMovieDetails(idMovie);
+    setMovieQuery(idMovie);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

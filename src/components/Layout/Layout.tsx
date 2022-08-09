@@ -1,16 +1,18 @@
 import * as React from 'react';
-import { ILayoutProps } from './interfaces';
+import { Outlet } from 'react-router-dom';
 import { Wrapper } from '../Wrapper';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 
 import styles from './Layout.module.scss';
 
-export const Layout: React.FC<ILayoutProps> = ({ children }) => (
+export const Layout: React.FC = () => (
   <>
     <Header />
     <main className={styles.main}>
-      <Wrapper>{children}</Wrapper>
+      <Wrapper>
+        <Outlet />
+      </Wrapper>
     </main>
     <Footer />
   </>

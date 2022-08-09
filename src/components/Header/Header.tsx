@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import cn from 'classnames';
+import { Link } from 'react-router-dom';
 import { LOCALE, I18Y } from '../../core/i18y';
-import { NOTIFICATION_TYPES } from '../../core/constants';
+import { NOTIFICATION_TYPES, QUERY_PARAMS_BY_MOVIES } from '../../core/constants';
 import { IPromoNotificationProps } from '../UI/PromoNotification/interfaces';
 import { TNotificationType } from '../../core/types/TNotificationType';
 
-import { useActions, useAppSelector } from '../../hooks/redux';
+import { useActions } from '../../hooks/redux';
 import useToggleModal from '../../hooks/useToggleModal';
+import useQueryParam from '../../hooks/useQueryParam';
 
 import { Wrapper } from '../Wrapper';
 import { Button } from '../UI/Button';
@@ -25,10 +27,9 @@ import plusIcon from '../../assets/sprites/plus.svg';
 import searchIcon from '../../assets/sprites/search.svg';
 
 export const Header: React.FC = () => {
-  const { openedMovieId } = useAppSelector(state => state.movies);
+  const [idMovieDetails, setIdMovieDetails] = useQueryParam(QUERY_PARAMS_BY_MOVIES.MOVIE);
   const { isOpenModal, onToggleModal } = useToggleModal();
   const { isOpenModal: isOpenSuccessModal, onToggleModal: onToggleSuccessModal } = useToggleModal();
-  const [idMovieDetails, setIdMovieDetails] = useState(null);
   const [isShowSearch, setIsShowSearch] = useState<boolean>(true);
   const { setMovieDetails } = useActions();
   const [notification, setNotification] = useState<IPromoNotificationProps>({
@@ -38,11 +39,11 @@ export const Header: React.FC = () => {
   });
 
   useEffect(() => {
-    if (openedMovieId) {
-      setIdMovieDetails(openedMovieId);
+    if (idMovieDetails) {
+      setIdMovieDetails(idMovieDetails);
       setIsShowSearch(false);
     }
-  }, [openedMovieId]);
+  }, [idMovieDetails]);
 
   const handlerShowSearch = () => {
     setIsShowSearch(true);
@@ -71,9 +72,9 @@ export const Header: React.FC = () => {
       </div>
       <Wrapper className={styles.container}>
         <div className={styles.topPanel}>
-          <a href='/' className={styles.logo}>
+          <Link to='/' className={styles.logo}>
             <img src={logo} alt={I18Y[LOCALE].LOGOTYPE_ALT} />
-          </a>
+          </Link>
 
           <Button
             type='button'
