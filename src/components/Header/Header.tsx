@@ -31,7 +31,6 @@ export const Header: React.FC = () => {
   const { isOpenModal, onToggleModal } = useToggleModal();
   const { isOpenModal: isOpenSuccessModal, onToggleModal: onToggleSuccessModal } = useToggleModal();
   const [isShowSearch, setIsShowSearch] = useState<boolean>(true);
-  const { setMovieDetails } = useActions();
   const [notification, setNotification] = useState<IPromoNotificationProps>({
     title: '',
     message: '',
@@ -48,7 +47,6 @@ export const Header: React.FC = () => {
   const handlerShowSearch = () => {
     setIsShowSearch(true);
     setIdMovieDetails(null);
-    setMovieDetails(null);
   };
 
   const onAddMovieSuccess = (state: boolean) => {

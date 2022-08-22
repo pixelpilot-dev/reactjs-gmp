@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input component renders correctly 1`] = `
+<DocumentFragment>
+  <input
+    class="input"
+    id="input"
+    name="input"
+    placeholder=""
+    type="text"
+    value=""
+  />
+</DocumentFragment>
+`;
+
+exports[`Input component renders with label correctly 1`] = `
+<DocumentFragment>
+  <label
+    class="label"
+    for="input"
+  >
+    Input label
+  </label>
+  <input
+    class="input"
+    id="input"
+    name="input"
+    placeholder=""
+    type="text"
+    value=""
+  />
+</DocumentFragment>
+`;
+
+exports[`Input component should be invalid 1`] = `
+<DocumentFragment>
+  <input
+    class="input isInvalid"
+    id="input"
+    name="input"
+    placeholder=""
+    type="text"
+    value=""
+  />
+</DocumentFragment>
+`;

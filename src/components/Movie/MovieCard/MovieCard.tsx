@@ -22,7 +22,6 @@ export const MovieCard: React.FC<IMovieCardProps> = ({ movie, className, onEdit,
   ) => {
     event.preventDefault();
 
-    // setMovieDetails(idMovie);
     setMovieQuery(idMovie);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };

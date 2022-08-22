@@ -44,6 +44,8 @@ export const GENRES = [
   'Sport',
 ];
 
+export const GENRES_FOR_FILTER = ['Fantasy', 'Comedy', 'Family', 'Drama'];
+
 export const ERROR_CAPTION_FOR_FORMS = {
   REQUIRED: 'Required',
   IS_EMAIL: 'Email is invalid',
