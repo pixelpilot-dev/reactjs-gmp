@@ -6,9 +6,18 @@ import { IMovieProps } from '../../../core/types/IMovieProps';
 import { replaceNotFoundImage } from '../../../core/utils/replaceNotFoundImage';
 
 import styles from './MovieDetails.module.scss';
+import { I18Y, LOCALE } from '../../../core/i18y';
 
 export const MovieDetails: React.FC<IMovieDetailsProps> = ({ id }) => {
-  const { data = {}, isLoading } = useGetMovieByIdQuery(id);
+  const { data = {}, isLoading, isError } = useGetMovieByIdQuery(id);
+
+  if (isLoading) return null;
+
+  if (isError) return (
+    <div className={styles.error}>
+      <h2 className={styles.title}>{I18Y[LOCALE].ERROR_TEXT_FOR_API}</h2>
+    </div>
+  );
 
   const renderGenre = (item: string) => {
     return (
@@ -19,8 +28,6 @@ export const MovieDetails: React.FC<IMovieDetailsProps> = ({ id }) => {
   };
 
   const renderGenresList = (items: string[]) => items.map(renderGenre);
-
-  if (isLoading) return null;
 
   const { poster_path, title, vote_average, genres, release_date, runtime, overview } =
     data as IMovieProps;

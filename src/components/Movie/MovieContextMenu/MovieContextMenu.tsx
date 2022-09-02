@@ -21,7 +21,11 @@ export const MovieContextMenu: React.FC<IMovieContextMenuProps> = ({ children, c
   const onClose = () => setIsShow(false);
 
   return (
-    <div ref={ref} className={cn(styles.menu, { [styles.isShow]: isShow }, className)}>
+    <div
+      data-testid='menu'
+      ref={ref}
+      className={cn(styles.menu, { [styles.isShow]: isShow }, className)}
+    >
       <button className={styles.btnOpen} type='button' onClick={onOpen}>
         <Icon icon={dotIcon} />
       </button>

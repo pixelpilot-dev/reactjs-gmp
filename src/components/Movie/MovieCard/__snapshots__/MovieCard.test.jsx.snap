@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieCard component should render correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="card"
+    data-testid="movieCard"
+  >
+    <div
+      class="menu menuContext"
+      data-testid="menu"
+    >
+      <button
+        class="btnOpen"
+        type="button"
+      >
+        <svg
+          class="icon"
+        >
+          <use
+            xlink:href="#undefined"
+          />
+        </svg>
+      </button>
+      <button
+        class="btnClose"
+        type="button"
+      >
+        <svg
+          class="icon"
+        >
+          <use
+            xlink:href="#undefined"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      aria-hidden="true"
+      class="preview"
+      data-testid="showDetailsOnPicture"
+      role="button"
+    >
+      <img
+        alt="Wonder"
+        src="https://image.tmdb.org/t/p/w500/ouYgAatYH4JzIThj6FI3UYf31RI.jpg"
+      />
+    </div>
+    <div
+      class="info"
+    >
+      <div
+        aria-hidden="true"
+        class="title"
+        data-testid="showDetailsOnTitle"
+        role="button"
+      >
+        Wonder
+      </div>
+      <span
+        class="year"
+      >
+        2017
+      </span>
+    </div>
+    <div
+      class="genres"
+    >
+      <span
+        class="genre"
+        data-testid="genre"
+      >
+        Drama
+      </span>
+      <span
+        class="genre"
+        data-testid="genre"
+      >
+        Family
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;
