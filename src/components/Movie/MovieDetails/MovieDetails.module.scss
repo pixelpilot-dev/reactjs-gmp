@@ -109,3 +109,13 @@
     line-height: 58px;
   }
 }
+
+.error {
+  padding: 100px 0;
+  text-align: center;
+
+  .title {
+    @extend %h1;
+    color: $primary;
+  }
+}

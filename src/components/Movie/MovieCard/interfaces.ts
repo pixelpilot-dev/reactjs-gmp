@@ -1,8 +1,8 @@
 import { IMovieProps } from '../../../core/types/IMovieProps';
+import { IPromoNotificationProps } from '../../UI/PromoNotification/interfaces';
 
 export interface IMovieCardProps {
   movie: IMovieProps;
   className?: string;
-  onEdit: (id: string | number) => void;
-  onDelete: (id: string | number) => void;
+  onSuccessModal?: (notification: IPromoNotificationProps) => void;
 }

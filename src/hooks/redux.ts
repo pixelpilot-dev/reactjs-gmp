@@ -1,11 +1,8 @@
 import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
 import { bindActionCreators } from '@reduxjs/toolkit';
 import { AppDispatch, RootState } from '../core/store';
-import { moviesActions } from '../core/store/movies/slice';
 
-const actions = {
-  ...moviesActions,
-};
+const actions = {};
 
 export const useActions = () => {
   const dispatch = useDispatch();

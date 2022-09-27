@@ -19,7 +19,7 @@ export const FilterByTags: React.FC<IFilterByTagsProps> = ({ options }) => {
 
   const handleActiveItem = (item: string) => {
     setActive(item);
-    setTag(item, { replace: true });
+    setTag(item);
   };
 
   const renderItem = (item: string) => {

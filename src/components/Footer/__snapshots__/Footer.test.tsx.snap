@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer component should be render correctly 1`] = `
+<DocumentFragment>
+  <footer
+    class="footer"
+  >
+    <div
+      class="wrapper container"
+    >
+      <a
+        class="logo"
+        href="/"
+      >
+        <img
+          alt="NetflixRoulette"
+          src="netflixroulette.svg"
+        />
+      </a>
+    </div>
+  </footer>
+</DocumentFragment>
+`;

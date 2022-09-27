@@ -63,6 +63,7 @@
         "format": ["camelCase", "UPPER_CASE", "snake_case", "PascalCase"]
       }
     ],
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "testing-library/prefer-screen-queries": "off"
   }
 }

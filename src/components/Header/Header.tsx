@@ -6,8 +6,6 @@ import { NOTIFICATION_TYPES, QUERY_PARAMS_BY_MOVIES } from '../../core/constants
 import { IPromoNotificationProps } from '../UI/PromoNotification/interfaces';
 import { TNotificationType } from '../../core/types/TNotificationType';
 
-import { useActions } from '../../hooks/redux';
-import useToggleModal from '../../hooks/useToggleModal';
 import useQueryParam from '../../hooks/useQueryParam';
 
 import { Wrapper } from '../Wrapper';
@@ -28,10 +26,9 @@ import searchIcon from '../../assets/sprites/search.svg';
 
 export const Header: React.FC = () => {
   const [idMovieDetails, setIdMovieDetails] = useQueryParam(QUERY_PARAMS_BY_MOVIES.MOVIE);
-  const { isOpenModal, onToggleModal } = useToggleModal();
-  const { isOpenModal: isOpenSuccessModal, onToggleModal: onToggleSuccessModal } = useToggleModal();
+  const [isOpenModal, setStateModal] = useState(false);
+  const [isOpenSuccessModal, setStateSuccessModal] = useState(false);
   const [isShowSearch, setIsShowSearch] = useState<boolean>(true);
-  const { setMovieDetails } = useActions();
   const [notification, setNotification] = useState<IPromoNotificationProps>({
     title: '',
     message: '',
@@ -48,7 +45,6 @@ export const Header: React.FC = () => {
   const handlerShowSearch = () => {
     setIsShowSearch(true);
     setIdMovieDetails(null);
-    setMovieDetails(null);
   };
 
   const onAddMovieSuccess = (state: boolean) => {
@@ -61,9 +57,21 @@ export const Header: React.FC = () => {
       message: I18Y[LOCALE].NOTIFICATION_MESSAGE_SUCCESS_FOR_ADD_MOVIE,
       type: NOTIFICATION_TYPES.SUCCESS as TNotificationType,
     });
-    onToggleModal();
-    onToggleSuccessModal();
+    setStateModal(false);
+    setStateSuccessModal(true);
   };
+
+  const modalAddMovie = isOpenModal ? (
+    <Modal isOpen={isOpenModal} onClose={setStateModal}>
+      <AddMovie onSuccess={onAddMovieSuccess} />
+    </Modal>
+  ) : null;
+
+  const modalSuccessAddMovie = isOpenSuccessModal ? (
+    <Modal isOpen={isOpenSuccessModal} onClose={setStateSuccessModal}>
+      <PromoNotification {...notification} />
+    </Modal>
+  ) : null;
 
   return (
     <header className={cn(styles.header, { [styles.isShowMovie]: !isShowSearch })}>
@@ -80,18 +88,13 @@ export const Header: React.FC = () => {
             type='button'
             theme='info'
             className={styles.addMovieButton}
-            onClick={() => onToggleModal()}
+            onClick={() => setStateModal(true)}
           >
             <Icon icon={plusIcon} /> {I18Y[LOCALE].BUTTON_ADD_MOVIE}
           </Button>
 
-          <Modal isOpen={isOpenModal} onClose={onToggleModal}>
-            <AddMovie onSuccess={onAddMovieSuccess} />
-          </Modal>
-
-          <Modal isOpen={isOpenSuccessModal} onClose={onToggleSuccessModal}>
-            <PromoNotification {...notification} />
-          </Modal>
+          {modalAddMovie}
+          {modalSuccessAddMovie}
 
           <Button
             type='button'

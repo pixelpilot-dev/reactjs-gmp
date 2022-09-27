@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search component should render correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="search"
+  >
+    <div
+      class="title"
+    >
+      Find your movie
+    </div>
+    <form
+      action="#"
+      class="form"
+    >
+      <input
+        class="input input"
+        id="search"
+        name="search"
+        placeholder="What do you want to watch?"
+        type="text"
+        value=""
+      />
+      <button
+        class="button default button"
+        type="submit"
+      >
+        Search
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;

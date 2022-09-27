@@ -24,4 +24,5 @@ export default {
   PAGE_NOT_FOUND_TEXT: 'We can`t find the page you are looking for. Go ',
   PAGE_NOT_FOUND_LINK_HOME: 'home',
   NO_RESULT_SEARCH: 'Sorry! No result found :(',
+  ERROR_TEXT_FOR_API: 'Oh no, there was an error',
 };

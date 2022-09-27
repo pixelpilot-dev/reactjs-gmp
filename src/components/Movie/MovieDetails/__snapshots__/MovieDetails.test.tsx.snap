@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieDetails component should render after fetching from API 1`] = `
+<section>
+  <section
+    class="details"
+  >
+    <div
+      class="picture"
+    >
+      <img
+        alt="Wonder"
+        src="https://image.tmdb.org/t/p/w500/ouYgAatYH4JzIThj6FI3UYf31RI.jpg"
+      />
+    </div>
+    <div
+      class="mainInfo"
+    >
+      <div
+        class="header"
+      >
+        <h2
+          class="title"
+        >
+          Wonder
+        </h2>
+        <span
+          class="rate"
+        >
+          8.2
+        </span>
+      </div>
+      <div
+        class="genres"
+      >
+        <span
+          class="genre"
+        >
+          Drama
+        </span>
+        <span
+          class="genre"
+        >
+          Family
+        </span>
+      </div>
+      <div
+        class="options"
+      >
+        <span
+          class="optionsItem"
+        >
+          2017
+        </span>
+        <span
+          class="optionsItem"
+        >
+          1h 53min
+        </span>
+      </div>
+      <div
+        class="overview"
+      >
+        The story of August Pullman – a boy with facial differences – who enters fifth grade, attending a mainstream elementary school for the first time.
+      </div>
+    </div>
+  </section>
+</section>
+`;
